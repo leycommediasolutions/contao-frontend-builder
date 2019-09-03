@@ -1,0 +1,85 @@
+frontend_builder:
+
+    #frontend_icons:
+        # de:
+        #     headline: 
+        #         icon: 
+        #         alt: 
+        #         headline: 
+        #         description:  
+        # en:
+        #     headline: 
+        #         icon: 
+        #         alt: 
+        #         headline: 
+        #         description:  
+
+    frontend_icons:
+        de: 
+            headline: 
+                icon: icon_headline.svg
+                alt: Headline
+            text:
+                icon: icon_text.svg
+                alt: Text
+            html:
+                icon: icon_html.svg
+                alt: HTML
+            list:  
+                icon: icon_list.svg
+                alt: Liste            
+            table: 
+                icon: icon_table.svg
+                alt: Tabelle               
+            code: 
+                icon: icon_code.svg
+                alt: Code                               
+            accordionStart:
+                icon: icon_acc_wrapper_start.svg
+                alt: Akkordeon Start              
+            accordionStop:
+                icon: icon_acc_wrapper_end.svg
+                alt: Akkordeon Ende               
+            hyperlink:
+                icon: icon_hyperlink.svg
+                alt: Hyperlink            
+            toplink:
+                icon: icon_toplink.svg
+                alt: Top Link    
+            image:
+                icon: icon_image.svg
+                alt: Bild               
+            gallery:
+                icon: icon_gallery.svg
+                alt: Galerie               
+            player:
+                icon: icon_video_audio.svg
+                alt: Player                 
+            youtube:
+                icon: icon_youtube.svg
+                alt: YouTube              
+            vimeo:
+                icon: icon_vimeo.svg
+                alt: Vimeo               
+            download:
+                icon: icon_download.svg
+                alt: Download              
+            downloads:
+                icon: icon_downloads.svg
+                alt: Downloads               
+            article:
+                icon: icon_include_article.svg
+                alt: Artikel 
+            form:                
+                icon: icon_include_form.svg
+                alt: Formular                               
+            module:
+                icon: icon_include_module.svg
+                alt: Modul              
+            teaser:
+                icon: icon_include_article_teaser.svg
+                alt: Artikel Teaser                
+            # accordionSingle:
+            # sliderStart:
+            # sliderStop:
+            # alias:

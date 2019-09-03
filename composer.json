@@ -1,0 +1,22 @@
+{
+	"name":"leycommediasolutions/contao-frontend-builder",
+	"description":"!!DEV!! Diese Erweiterung wird momentan noch weiterentwickelt!",
+	"keywords":["contao","frontend-editing"],
+	"type":"contao-bundle",
+	"license":"MIT",
+	"require":{
+		"php":">=5.5",
+		"contao/core-bundle":"^4.3"
+	},
+	"autoload":{
+		"psr-4": {
+			"leycommediasolutions\\FrontendBuilder\\": "src/"
+		}
+	},
+	"replace":{
+		"contao-legacy/frontend-builder":"self.version"
+	},
+	"extra":{
+		"contao-manager-plugin": "leycommediasolutions\\FrontendBuilder\\ContaoManagerPlugin"
+	}
+}

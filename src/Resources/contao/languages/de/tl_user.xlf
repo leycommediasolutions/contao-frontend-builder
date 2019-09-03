@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><xliff version="1.1">
+  <file datatype="php" original="src/leycommediasolutions/frontend-builder/Resources/contao/languages/de/tl_user.xlf" source-language="de">
+    <body>
+      <trans-unit id="tl_user.frontendbuilder.0">
+        <source>Frontend Builder aktivieren</source>
+      </trans-unit>
+      <trans-unit id="tl_user.frontendbuilder.1">
+        <source>Wählen Sie dieses Feld aus damit der Frontend Builder im Frontend angezeigt wird.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

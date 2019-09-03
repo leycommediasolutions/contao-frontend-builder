@@ -1,0 +1,9 @@
+services:
+    frontend_builder.frontend_hooks:
+        class: leycommediasolutions\FrontendBuilder\FrontendHooks
+        arguments:
+            - "%frontend_builder.frontend_icons%"
+        public: true
+    frontend_builder.backend_hooks:
+        class: leycommediasolutions\FrontendBuilder\BackendHooks
+        public: true

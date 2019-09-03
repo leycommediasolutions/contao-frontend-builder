@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><xliff version="1.1">
+  <file datatype="php" original="src/leycommediasolutions/frontend-builder/Resources/contao/languages/de/FrontendBuilder.xlf" source-language="de">
+    <body>
+        <trans-unit id="tl_frontendbuilder.item.0">
+            <source>Elementtyp</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.item.1">
+            <source>Bitte wählen Sie den Typ des Inhaltselements.</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.language.0">
+            <source>Sprache</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.language.1">
+            <source>Bitte wählen Sie die Sprache aus.</source>
+        </trans-unit>        
+        <trans-unit id="tl_frontendbuilder.headline.0">
+            <source>Überschrift</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.headline.1">
+            <source>Geben Sie die Überschrift für dieses Element ein.</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.description.0">
+            <source>Beschreibung</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.description.1">
+            <source>Bitte geben Sie eine Beschreibung für dieses Element ein.</source>
+        </trans-unit>   
+        <trans-unit id="tl_frontendbuilder.icon.0">
+            <source>Icon</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.icon.1">
+            <source>Bitte wählen Sie ein Icon für dieses Element aus.</source>
+        </trans-unit>    
+        <trans-unit id="tl_frontendbuilder.alt.0">
+            <source>Alt</source>
+        </trans-unit>
+        <trans-unit id="tl_frontendbuilder.alt.1">
+            <source>Bitte geben Sie einen Alt ein.</source>
+        </trans-unit>   
+      <trans-unit id="tl_frontendbuilder.type_legend">
+        <source>Elementtyp</source>
+      </trans-unit>        
+      <trans-unit id="tl_frontendbuilder.define_legend">
+        <source>Eigenschaften</source>
+      </trans-unit>     
+      <trans-unit id="tl_frontendbuilder.show.0">
+        <source>Elementdetails</source>
+      </trans-unit>
+      <trans-unit id="tl_frontendbuilder.show.1">
+        <source>Details des Inhaltselements ID %s anzeigen</source>
+      </trans-unit>      
+      <trans-unit id="tl_frontendbuilder.editheader.0">
+        <source>Artikel bearbeiten</source>
+      </trans-unit>
+      <trans-unit id="tl_frontendbuilder.editheader.1">
+        <source>Die Artikeleinstellungen bearbeiten</source>
+      </trans-unit>    
+      <trans-unit id="tl_frontendbuilder.copy.0">
+        <source>Element duplizieren</source>
+      </trans-unit>
+      <trans-unit id="tl_frontendbuilder.copy.1">
+        <source>Inhaltselement ID %s duplizieren</source>
+      </trans-unit>   
+      <trans-unit id="tl_frontendbuilder.new.0">
+        <source>Neues Element</source>
+      </trans-unit>
+      <trans-unit id="tl_frontendbuilder.new.1">
+        <source>Ein neues Inhaltselement erstellen</source>
+      </trans-unit>                         
+    </body>
+  </file>
+</xliff>
