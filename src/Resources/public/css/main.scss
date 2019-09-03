@@ -29,6 +29,9 @@ html, body{
             box-sizing: border-box;
             margin: 0; 
             padding: 0;
+            a{
+                text-decoration: none;
+            }
         }
         position: fixed;
         left: auto; 
@@ -338,8 +341,10 @@ html, body{
                         -moz-transition: ALL ease .2s;
                         -o-transition: ALL ease .2s;
                         transition: ALL ease .2s;
+                        text-decoration: none; 
                         &:hover{
                             color: $color-default;
+                            text-decoration: none; 
                         } 
                     }
                 }

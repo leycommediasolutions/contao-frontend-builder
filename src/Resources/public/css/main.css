@@ -31,6 +31,10 @@ html, body {
   padding: 0;
 }
 
+#fbly.fbly_sidebar * a {
+  text-decoration: none;
+}
+
 #fbly.fbly_sidebar h1, #fbly.fbly_sidebar h2, #fbly.fbly_sidebar h3, #fbly.fbly_sidebar h4, #fbly.fbly_sidebar h5, #fbly.fbly_sidebar h6, #fbly.fbly_sidebar .h1 {
   color: #444;
   font-size: 18px;
@@ -378,10 +382,12 @@ html, body {
   color: rgba(68, 68, 68, 0.5);
   -webkit-transition: ALL ease .2s;
   transition: ALL ease .2s;
+  text-decoration: none;
 }
 
 #fbly.fbly_sidebar .fbly_inside .fbly_footer .fbly_company a:hover {
   color: #A4C420;
+  text-decoration: none;
 }
 
 #fbly.fbly_sidebar .fbly_inside .fbly_footer .fbly_image {
