@@ -87,6 +87,11 @@ html, body{
                             color: #fff;
                             font-size: 15px;
                             display: block;
+                            text-decoration: none;
+                            &:hover{
+                                color: #FFF; 
+                                text-decoration: none;
+                            }
                         }
                     }
                     nav{
@@ -404,6 +409,7 @@ html, body{
                 &.h1{
                     color: #FFF; 
                     padding: 0;
+                    font-size: 16px;
                     &:before{
                         content:"";
                         content: "";
@@ -518,7 +524,7 @@ div[id*="fbly_placeholder_"] {
         -o-transition: ALL ease .5s;
         transition: ALL ease .5s;
         overflow: hidden;
-        width: 0px;
+        width: 100%;
         text-align: center;
         padding: 0; 
         margin: 0;

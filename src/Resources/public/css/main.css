@@ -86,6 +86,12 @@ html, body {
   color: #fff;
   font-size: 15px;
   display: block;
+  text-decoration: none;
+}
+
+#fbly.fbly_sidebar .fbly_inside .fbly_header .fbly_header_inside .fbly_logo a:hover {
+  color: #FFF;
+  text-decoration: none;
 }
 
 #fbly.fbly_sidebar .fbly_inside .fbly_header .fbly_header_inside nav {
@@ -441,6 +447,7 @@ html, body {
 #fbly.fbly_sidebar #fbly_open_button span.h1 {
   color: #FFF;
   padding: 0;
+  font-size: 16px;
 }
 
 #fbly.fbly_sidebar #fbly_open_button span.h1:before {
@@ -539,7 +546,7 @@ div[id*="fbly_placeholder_"].fbly_placeholder {
   -webkit-transition: ALL ease .5s;
   transition: ALL ease .5s;
   overflow: hidden;
-  width: 0px;
+  width: 100%;
   text-align: center;
   padding: 0;
   margin: 0;
