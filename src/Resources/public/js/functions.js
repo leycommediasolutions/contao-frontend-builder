@@ -1,11 +1,11 @@
 $(document).ready(function(){
     $('.matchHeight').matchHeight();  
-    $('.tooltip').tooltipster({
-        functionPosition: function(instance, helper, position){
-            position.coord.top += 5;
-            return position;
-        }
-    });
+    // $('.tooltip').tooltipster({
+    //     functionPosition: function(instance, helper, position){
+    //         position.coord.top += 5;
+    //         return position;
+    //     }
+    // });
     var footerHeight = 0,
         footerTop = 0,
         $footer = $("#fbly_footer");
