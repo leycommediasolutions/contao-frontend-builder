@@ -1,4 +1,8 @@
 <?php 
+
+$GLOBALS['frontendbuilder']['version'] = "dev-master";
+
+
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = array('frontend_builder.frontend_hooks', 'outputFrontendTemplateHook');
 $GLOBALS['TL_HOOKS']['parseFrontendTemplate'][] = array('frontend_builder.frontend_hooks', 'parseFrontendTemplateHook');
 $GLOBALS['TL_HOOKS']['getContentElement'][] = array('frontend_builder.frontend_hooks', 'getContentElementHook');

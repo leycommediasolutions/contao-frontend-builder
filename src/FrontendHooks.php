@@ -209,7 +209,7 @@ class FrontendHooks
 	 * @param  string $kk
 	 * @return string
 	 */
-	public function createSelect($frontenddata, $frontendElement,$v, $kk){
+	public function createSelect($frontenddata, $frontendElement,$v){
 		foreach (array_keys($v) as $kk)
 		{
 			$editAllowed = true;
@@ -229,6 +229,9 @@ class FrontendHooks
 					$headline = $frontendElement[$GLOBALS["TL_LANGUAGE"]][$kk]["headline"];
 				}else{
 					$headline = $GLOBALS['TL_LANG']['CTE'][$kk][0];
+				}
+				if(!$headline){
+					$headline = $kk; 
 				}
 
 				if($frontenddata[$kk] && $frontenddata[$kk]["icon"] != ""){
@@ -321,7 +324,7 @@ class FrontendHooks
 					$label_group = $k;
 				}
 
-				if($content_select = FrontendHooks::createSelect($frontenddata, $frontendElement,$v, $kk)){
+				if($content_select = FrontendHooks::createSelect($frontenddata, $frontendElement,$v)){
 					$output .= '<div class="fbly_select_itemHolder fbly_select_close_'. preg_replace('/\s/', '_', $k) .'"><h3><span>'. $label_group  .'</span></h3>';
 					$output .= '<div class="inside_fbly_select_itemHolder">';
 					$output .= $content_select;
@@ -380,7 +383,7 @@ class FrontendHooks
 								</a>
 							</div>
 							<div class="fbly_version">
-								<span>Version 1.0</span>
+								<span>Version '.$GLOBALS['frontendbuilder']['version'].'</span>
 							</div>
 						</div>
 					</div>
@@ -428,10 +431,12 @@ class FrontendHooks
 				if (isset($oldData['links']) && isset($data['links'])) {
 					$data['links'] = array_merge($oldData['links'], $data['links']);
 				}
-				$data = array_merge($oldData, $data);
-				$matches[0] = preg_replace('(\\sdata-createElement="([^"]*)")is', '', $matches[0]);
-			}
 
+				if(count($data) > 0){
+					$data = array_merge($oldData, $data);
+					$matches[0] = preg_replace('(\\sdata-createElement="([^"]*)")is', '', $matches[0]);
+				}
+			}
 			if(count($data) > 0){
 				return $matches[0] . ' data-createElement="' . htmlspecialchars(json_encode($data)) . '"' . $content;
 			}else{
