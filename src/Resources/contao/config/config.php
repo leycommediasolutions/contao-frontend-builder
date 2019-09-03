@@ -1,6 +1,6 @@
 <?php 
 
-$GLOBALS['frontendbuilder']['version'] = "dev-master";
+$GLOBALS['frontendbuilder']['version'] = "1.0";
 
 
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = array('frontend_builder.frontend_hooks', 'outputFrontendTemplateHook');
