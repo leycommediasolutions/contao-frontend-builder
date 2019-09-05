@@ -1,2 +1,2 @@
-# Frontend Builder
-!!DEV!! Diese Erweiterung wird momentan noch weiterentwickelt!
+# Contao Frontend Builder
+Just drag & drop your content elements into your articles. Works good in addition to the Rocksolid Frontend Helper.
