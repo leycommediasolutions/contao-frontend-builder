@@ -18,6 +18,12 @@ Bitte denkt daran das diese Erweiterung noch in den „Startlöchern“ steht un
 Für diese Erweiterung können wir keinerlei Haftung übernehmen. 
 
 ## Bilder
-![Screenshot Contao Frontend Builder](https://www.leycom.de/files/github/screenshots/contao-frontend-builder/screenshot_leycom-de.png)
-![Screenshot Contao Frontend Builder](https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-hover.jpg)
-![Screenshot Contao Frontend Builder](https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-menu.jpg)
+<p align="center">
+  <img width="460" height="300" src="https://www.leycom.de/files/github/screenshots/contao-frontend-builder/screenshot_leycom-de.png">
+</p>
+<p align="center">
+  <img width="460" height="300" src="https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-hover.jpg">
+</p>
+<p align="center">
+  <img width="460" height="300" src="https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-menu.jpg">
+</p>
