@@ -19,11 +19,11 @@ Für diese Erweiterung können wir keinerlei Haftung übernehmen.
 
 ## Bilder
 <p align="center">
-  <img width="460" height="300" src="https://www.leycom.de/files/github/screenshots/contao-frontend-builder/screenshot_leycom-de.png">
+  <img width="33%" height="300" src="https://www.leycom.de/files/github/screenshots/contao-frontend-builder/screenshot_leycom-de.png">
 </p>
 <p align="center">
-  <img width="460" height="300" src="https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-hover.jpg">
+  <img width="33%" height="300" src="https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-hover.jpg">
 </p>
 <p align="center">
-  <img width="460" height="300" src="https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-menu.jpg">
+  <img width="33%" height="300" src="https://www.leycom.de/files/default/images/sonstige/contao-erweiterungen/contao-frontend-builder-menu.jpg">
 </p>
