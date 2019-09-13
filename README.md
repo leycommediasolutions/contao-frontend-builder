@@ -17,4 +17,5 @@ Außerdem lassen sich durch die Erweiterung ce_access von terminal42 die Inhalts
 Bitte denkt daran das diese Erweiterung noch in den „Startlöchern“ steht und noch nicht voll ausgereift ist, jedoch lässt sie sich problemlos installieren und verwenden. Falls doch Probleme unerwartet auftreten sollen, schreibt uns doch bitte ein Issue. Für Fragen, Anregungen oder Tadel könnt ihr uns jeder Zeit eine E-Mail an die github@leycom.de schicken, oder besucht uns doch unter https://www.leycom.de 
 Für diese Erweiterung können wir keinerlei Haftung übernehmen. 
 
+## Bilder
 ![Screenshot Contao Frontend Builder](https://www.leycom.de/files/github/screenshots/contao-frontend-builder/screenshot_leycom-de.png)
