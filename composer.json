@@ -3,6 +3,7 @@
 	"description":"Content-Elemente können ganz einfach per Drag & Drop in die Artikel an beliebige Positionen gezogen werden.",
 	"keywords":["contao","frontend-editing", "content elements", "access"],
 	"type":"contao-bundle",
+	"homepage":"https://www.leycom.de/",
 	"license":"MIT",
 	"require":{
 		"php":">=5.5",
