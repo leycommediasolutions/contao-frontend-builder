@@ -12,7 +12,7 @@ class BackendHooks
     public function myGetAttributesFromDca($arrAttributes, $objDca)
     {
         if (TL_MODE !== 'BE') {
-			return $content;
+		return $arrAttributes;
         }
         $type = \Input::GET("selectboxvalue");
         if($arrAttributes["name"] == "type" && $type != ""){
