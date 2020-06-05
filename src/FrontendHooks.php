@@ -69,9 +69,77 @@ class FrontendHooks
 					);
 				}
 			}
+
 			return static::insertData($content, $data);
 		}
 		return $content;
+	}
+
+	public function myGetArticle($objRow)
+	{
+		$database = \Database::getInstance();
+		$cols = array("main");
+
+		$layout = "";
+
+		$page = $database->prepare("SELECT * FROM tl_page WHERE id=?")
+						 ->limit(1)
+						 ->execute($objRow->pid);
+						
+		if($page->includeLayout && $page->layout){
+			//LAYOUT WURDE VERGEBEN
+		}else{
+			while(!$page_parent->includeLayout && !$page_parent->layout){
+				if($page_parent->id){
+					$new_pid = $page_parent->id;
+				}else{
+					$new_pid = $page->pid;
+				}
+				$page_parent = $database->prepare("SELECT * FROM tl_page WHERE id=?")
+										->limit(1)
+										->execute($new_pid);
+				$layout_id = $page_parent->layout;
+			}
+		}
+		$layout = $database->prepare("SELECT modules_frontendbuilder_cols, modules_frontendbuilder_row, modules_frontendbuilder_custom FROM tl_layout WHERE id=?")
+							->limit(1)
+							->execute($layout_id);
+
+		if (\in_array($layout->modules_frontendbuilder_row, array('2rwh', '3rw')))
+		{
+			$cols[] = 'header';
+		}
+
+		if (\in_array($layout->modules_frontendbuilder_cols, array('2cll', '3cl')))
+		{
+			$cols[] = 'left';
+		}
+
+		if (\in_array($layout->modules_frontendbuilder_cols, array('2clr', '3cl')))
+		{
+			$cols[] = 'right';
+		}
+
+		if (\in_array($layout->modules_frontendbuilder_row, array('2rwf', '3rw')))
+		{
+			$cols[] = 'footer';
+		}
+		if ($layout->modules_frontendbuilder_custom)
+		{
+			$custom_modules = deserialize($layout->modules_frontendbuilder_custom, true);
+			for($ix=0; $ix<count($custom_modules); $ix++){
+				$cols[] = $custom_modules[$ix];
+			}
+		}		
+		if($objRow->inColumn){
+			if (\in_array($objRow->inColumn, $cols))
+			{
+				$arrCSS = deserialize($objRow->cssID, true);
+				// use trim() to remove the leading space if $arrCSS[1] is empty
+				$arrCSS[1] = trim($arrCSS[1] . ' fbly_accept');
+				$objRow->cssID = serialize($arrCSS);				
+			}
+		}
 	}
 
 	/**
@@ -86,7 +154,7 @@ class FrontendHooks
 		if (!($permissions = static::checkLogin()) || !$template || substr($template, 0, 3) !== 'fe_' ) {
 			return $content;
 		}
-
+        $data = array();
 		$assetsDir = 'bundles/frontendbuilder';
 
 		$GLOBALS['TL_JAVASCRIPT'][] = $assetsDir . '/js/main.js';
@@ -108,7 +176,7 @@ class FrontendHooks
 		if (! $permissions = static::checkLogin()) {
 			return $content;
 		}
-
+        $data = array();
 		$do = 'article';
 		if ($row->ptable) {
 			foreach ($GLOBALS['BE_MOD'] as $category) {
@@ -298,7 +366,15 @@ class FrontendHooks
 		if (!($permissions = static::checkLogin())) {
 			return "";
 		}
+
+
+		//FEHLER
 		\System::loadLanguageFile('default');
+		\System::loadLanguageFile('CTE');
+		\System::loadLanguageFile('MOD');
+		\System::loadLanguageFile('FMD');
+		\System::loadLanguageFile('modules');
+
 		$User = UserClass::getInstance();
 
 		$output = "";
@@ -312,7 +388,6 @@ class FrontendHooks
 		while($frontendtext->next()){
 			$frontenddata[$frontendtext->item] = $frontendtext->row();
 		} 
-
 
 		foreach ($GLOBALS['TL_CTE'] as $k=>$v)
 		{
@@ -335,7 +410,9 @@ class FrontendHooks
 		}
 
 		return 					
-		'<div id="fbly" class="fbly_sidebar">
+		'
+		<!-- indexer::stop -->
+		<div id="fbly" class="fbly_sidebar">
 			<div id="fbly_open_button" class="open"><span class="h1">Contao Frontend Builder</span></div>
 			<div class="fbly_inside">
 				<div id="fbly_header" class="fbly_header">
@@ -391,6 +468,7 @@ class FrontendHooks
 			</div>					
 		</div>
 		<div id="fbly_iframe"><div id="fbly_iframe_headline"><h2>Contao Backend</h2></div><div id="fbly_iframe_closeButton">X</div><iframe id="fbly_iframe_iframe"></iframe><div id="fbly_preloader" class=""><div class="sk-folding-cube"><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div></div></div>
+		<!-- indexer::continue -->
 		';
 	}
 
@@ -430,8 +508,7 @@ class FrontendHooks
 				}
 				if (isset($oldData['links']) && isset($data['links'])) {
 					$data['links'] = array_merge($oldData['links'], $data['links']);
-				}
-
+                }
 				if(count($data) > 0){
 					$data = array_merge($oldData, $data);
 					$matches[0] = preg_replace('(\\sdata-createElement="([^"]*)")is', '', $matches[0]);
