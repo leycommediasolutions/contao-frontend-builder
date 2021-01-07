@@ -225,32 +225,38 @@ html, body{
                     padding-right: 15px;
                 }
                 .fbly_divider{
-                    height: 1px; 
-                    background-color: rgba($color-dark, .5); 
+                    height: 1px;                 
                     width: calc(100% + 30px);
                     content: "";
                     position: relative;
                     top: 0;
                     left: -15px;
-                    margin-top: 40px;
+                    margin-top: 20px;
                     margin-bottom: 15px;
                 }
                 .fbly_select{
                     width: 100%; 
                     .fbly_select_itemHolder{
-                        padding-bottom: 40px;
+                        padding-bottom: 20px;
+                        padding-top: 10px;
                         position: relative;
                         margin-bottom: 15px;
                         margin-left: -15px; 
                         margin-right: -15px;
-                        &:after{
+                        &:before{
                             height: 1px; 
                             background-color: rgba($color-dark, .5); 
                             width: 100%;
                             content: "";
                             position: absolute;
-                            bottom: 0;
                             left: 0;
+                            top: 0;
+                        }
+                        .fbly_select_itemHolder{
+                            &:before{
+                                width: 80%;
+                                left: 10%;
+                            }    
                         }
                         &:last-child{
                             &:after{
@@ -266,7 +272,7 @@ html, body{
                             padding-left: 15px;
                             padding-right: 15px; 
                             position: absolute; 
-                            top: -39px;
+                            top: -24px;
                             text-align: center;
                             width: 100%;
                             left: 0;
@@ -320,6 +326,9 @@ html, body{
                         }
                         .inside_fbly_select_itemHolder{
                             padding-top: 10px; 
+                            & + .fbly_select_itemHolder{
+                                margin-top: 30px;
+                            }
                         }
                     }
                 }
@@ -417,7 +426,6 @@ html, body{
                     font-size: 16px;
                     &:before{
                         content:"";
-                        content: "";
                         -webkit-mask-image: url("/system/themes/flexible/icons/arrow_right.svg");
                         mask-image: url("/system/themes/flexible/icons/arrow_right.svg");
                         background-color: #FFF;

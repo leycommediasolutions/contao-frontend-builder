@@ -5,6 +5,7 @@
 	"type":"contao-bundle",
 	"homepage":"https://www.leycom.de/",
 	"license":"MIT",
+	"version":"1.0",
 	"require":{
 		"php":">=5.5",
 		"contao/core-bundle":"^4.3"

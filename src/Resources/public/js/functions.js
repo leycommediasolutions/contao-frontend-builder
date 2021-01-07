@@ -77,6 +77,7 @@ $(document).ready(function(){
         var fbly_width = $("#fbly").outerWidth(); 
         var fbly_open_button = $("#fbly_open_button"); 
         var createelement = "headline";
+        var elementsetID = "0";
         var icon = "";
         var close = new Array(); 
         var id = 0; // PLACEHOLDER ID
@@ -139,6 +140,9 @@ $(document).ready(function(){
         //ACTION WITH ITEM
         $(".draggable_item").on("dragstart", function(event){
             createelement = $(this).attr("data-value");
+            if(createelement == "elementset"){
+                elementsetID = $(this).attr("data-elementset"); 
+            }
             $(this).addClass("fbly_item_dragstart");
             icon = $(this).children(".image_container").children("img").attr("src");
         });
@@ -173,14 +177,27 @@ $(document).ready(function(){
         $("body").on("drop", ".fbly_placeholder", function(event){
             event.preventDefault();
             if($(this).prop("tagName") != "BODY" && $(this).prop("tagName") != "SCRIPT" && $(this).prop("tagName") != "HTML"){
+
+
                 var old_url = $(this).attr("data-createelement-pastenewurl"); 
                 if(old_url){
-                    var url = old_url + "&selectboxvalue="+createelement;
+                    if(elementsetID != 0){
+                        //console.log(old_url);
+                        var old_url = old_url.replace("create", "elementset_edit");
+                        var url = old_url + "&elementset_id="+elementsetID;
+                    }else{
+                        var url = old_url + "&selectboxvalue="+createelement;
+                    }
+
                     $("#fbly_iframe iframe").attr("src", url);
                     $("#fbly_iframe").addClass("show");
                 }
+
             }
         }); 
+
+
+
         $("body").on("dragover", ".fbly_placeholder", function(event){
             //console.log($.isFunction(matchHeight));
             //console.log("function"==typeof define&&define.amd?define(["jquery"]));
@@ -214,7 +231,7 @@ $(document).ready(function(){
                 $("#fbly_preloader").addClass("loaded");
             }else{
                 //ABFRAGE
-                if(createelement == "text"){
+                if(createelement == "text" || elementsetID != 0){
                     $("#fbly_preloader").addClass("loaded");
                 }
                 setTimeout(function(){$("#fbly_preloader").addClass("loaded");}, 6000);

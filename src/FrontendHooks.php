@@ -159,7 +159,7 @@ class FrontendHooks
 
 		$GLOBALS['TL_JAVASCRIPT'][] = $assetsDir . '/js/main.js';
 		$GLOBALS['TL_JAVASCRIPT'][] = $assetsDir . '/js/functions.js';
-		$GLOBALS['TL_CSS'][] = $assetsDir . '/css/main.css';
+		$GLOBALS['TL_CSS'][] = $assetsDir . '/css/main.min.css';
 
 		return static::insertData($content, $data);
 	}
@@ -277,6 +277,11 @@ class FrontendHooks
 	 * @param  string $kk
 	 * @return string
 	 */
+
+	// if (class_exists(\leycommediasolutions\contao_elementsets\ElementSets::class)) {
+	// }
+
+
 	public function createSelect($frontenddata, $frontendElement,$v){
 		foreach (array_keys($v) as $kk)
 		{
@@ -348,7 +353,7 @@ class FrontendHooks
 
 
 				$output .= 
-				'<div class="fbly_select_item draggable_item tooltip" data-value='.$kk.' draggable="true" ondragstart="event.dataTransfer.setData(\'text/plain\',null)" '.$tooltip.'>
+				'<div class="fbly_select_item draggable_item tooltip" data-value="'.$kk.'" draggable="true" ondragstart="event.dataTransfer.setData(\'text/plain\',null)" '.$tooltip.'>
 					<div class="headline matchHeight"><span>'.$headline.'</span></div>
 					<figure class="image_container"><img src="'.$icon.'" alt="'.$alt.'" draggable="false"></figure>
 				</div>'; //					<div class="description"  class="tooltip" title="This is my images tooltip message!">'.$description.'</div>
@@ -366,7 +371,6 @@ class FrontendHooks
 		if (!($permissions = static::checkLogin())) {
 			return "";
 		}
-
 
 		//FEHLER
 		\System::loadLanguageFile('default');
@@ -389,6 +393,11 @@ class FrontendHooks
 			$frontenddata[$frontendtext->item] = $frontendtext->row();
 		} 
 
+
+
+
+
+
 		foreach ($GLOBALS['TL_CTE'] as $k=>$v)
 		{
 			if(array_keys($v)){
@@ -399,12 +408,62 @@ class FrontendHooks
 					$label_group = $k;
 				}
 
-				if($content_select = FrontendHooks::createSelect($frontenddata, $frontendElement,$v)){
-					$output .= '<div class="fbly_select_itemHolder fbly_select_close_'. preg_replace('/\s/', '_', $k) .'"><h3><span>'. $label_group  .'</span></h3>';
-					$output .= '<div class="inside_fbly_select_itemHolder">';
-					$output .= $content_select;
-					$output .= '</div>';
-					$output .= '</div>';
+				$pre = array('/\s/', '/\//', '/\*/', '/\+/', '/\#/', '/\~/', '/\"/', '/\§/', '/\$/', '/\!/', '/\%/', '/\&/', '/\(/', '/\)/', '/\=/', '/\?/', '/\´/', '/\{/', '/\[/', '/\]/', '/\}/', '/\>/', '/\</', '/\|/', '/\:/', '/\./', '/\,/', '/\;/');
+
+				if(class_exists(\leycommediasolutions\contao_elementsets\ElementSets::class) && $k == 'elementset' ){
+					if($content_select = FrontendHooks::createSelect($frontenddata, $frontendElement,$v)){
+						$output .= '<div class="fbly_select_itemHolder fbly_select_close_'. preg_replace($pre, '_', $k) .'"><h3><span>'. $label_group  .'</span></h3>';
+						$output .= '<div class="inside_fbly_select_itemHolder">';
+						$output .= $content_select;
+						$output .= '</div>';
+
+						$database = \Database::getInstance();
+				
+						$elementsets = $database->prepare("SELECT * FROM tl_elementsets")->execute();
+
+						if($elementsets->numRows > 0){
+							while($elementsets->next())
+							{
+								$array_elementset[$elementsets->category][] = $elementsets->row();
+							}
+						}
+
+						foreach ($array_elementset as $name => $attr ){
+							$output .= '<div class="fbly_select_itemHolder fbly_select_close_'. preg_replace($pre, '_', $k) .'_'.preg_replace($pre, '_',strtolower($name)) . '"><h3><span>'. $name  .'</span></h3>';
+							$output .= '<div class="inside_fbly_select_itemHolder">';
+								foreach($attr as $attr_detail){
+									$icon = \FilesModel::findByUuid($attr_detail["preview_image"])->path;
+									$output .= 
+									'<div class="fbly_select_item draggable_item" data-value="elementset" data-elementset="'.$attr_detail["id"].'" draggable="true" ondragstart="event.dataTransfer.setData(\'text/plain\',null)">
+										<div class="headline matchHeight"><span>'.$attr_detail["title"].'</span></div>
+										<figure class="image_container"><img src="'.$icon.'" alt="'.$attr_detail["title"].'" draggable="false"></figure>
+									</div>';
+								}
+							$output .= '</div>';
+							$output .= '</div>';								
+						}						
+						$output .= '</div>';
+					}
+				}
+
+				if(class_exists(\leycommediasolutions\contao_elementsets\ElementSets::class) && $k != 'elementset'){
+					if($content_select = FrontendHooks::createSelect($frontenddata, $frontendElement,$v)){
+						$output .= '<div class="fbly_select_itemHolder fbly_select_close_'. preg_replace($pre, '_', $k) .'"><h3><span>'. $label_group  .'</span></h3>';
+						$output .= '<div class="inside_fbly_select_itemHolder">';
+						$output .= $content_select;
+						$output .= '</div>';
+						$output .= '</div>';
+					}
+				}
+
+				if(!class_exists(\leycommediasolutions\contao_elementsets\ElementSets::class)){
+					if($content_select = FrontendHooks::createSelect($frontenddata, $frontendElement,$v)){
+						$output .= '<div class="fbly_select_itemHolder fbly_select_close_'. preg_replace('/\s/', '_', $k) .'"><h3><span>'. $label_group  .'</span></h3>';
+						$output .= '<div class="inside_fbly_select_itemHolder">';
+						$output .= $content_select;
+						$output .= '</div>';
+						$output .= '</div>';
+					}
 				}
 			}
 		}

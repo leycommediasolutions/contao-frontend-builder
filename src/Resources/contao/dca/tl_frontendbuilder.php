@@ -32,8 +32,9 @@ $GLOBALS['TL_DCA']['tl_frontendbuilder'] = array
 		),
 		'label' => array
 		(
-			'fields'                  => array('headline'),
-			'format'                  => '%s',
+			'fields'                  => array('icon', 'headline', 'item', 'description'),
+			'showColumns'             => true,
+			'label_callback'          => array('tl_frontendbuilder', 'addIcon')
 		),
 		'global_operations' => array
 		(
@@ -167,5 +168,28 @@ class tl_frontendbuilder extends Backend
 			}
         }
         return $groups;
+	}
+	/**
+	 * Add an image to each record
+	 *
+	 * @param array         $row
+	 * @param string        $label
+	 * @param DataContainer $dc
+	 * @param array         $args
+	 *
+	 * @return array
+	 */
+	public function addIcon($row, $label, DataContainer $dc, $args)
+	{	
+		if ($args[0] != '')
+		{
+			$objFile = FilesModel::findByUuid($args[0]);
+
+			if ($objFile !== null)
+			{
+				$args[0] = Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(100, 75, 'center_top'))->getUrl(TL_ROOT), '', 'class="theme_preview titel_elementsets"');
+			}
+		}
+		return $args;
 	}
 }
